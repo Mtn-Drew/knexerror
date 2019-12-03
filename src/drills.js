@@ -53,3 +53,14 @@ function costPerCategory() {
       console.log(result)
     })
 }
+
+function totalCategoryCosts() {
+  knexInstance
+    .select('category')
+    .from('shopping_list')
+    .groupBy('category')
+    .sum('price AS total')
+    .then(result => {
+      console.log(result)
+    })
+}
